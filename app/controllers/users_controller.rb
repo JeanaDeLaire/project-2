@@ -17,7 +17,8 @@ class UsersController < ProtectedController
   def signin
     creds = user_creds
     if (user = User.authenticate creds[:email],
-                                 creds[:password])
+                                 creds[:password],
+                                 creds[:username])
       render json: user, serializer: UserLoginSerializer, root: 'user'
     else
       head :unauthorized
