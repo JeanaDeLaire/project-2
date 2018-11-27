@@ -5,13 +5,7 @@ curl --include --request PATCH "http://localhost:4741/sites/${ID}" \
   ---data '{
     "site": {
       "name": "'"${NAME}"'",
-      "type": "'"${TYPE}"'",
-      "level_of_difficulty": "'"${DIFFICULTY}"'",
-      "parking": "'"${PARKING}"'",
-      "cost": "'"${COST}"'",
-      "location": "'"${LOCATION}"'",
-      "length_of_trail: "'"${LENGTH}"'",
       "description": "'"${DESCRIPTION}"'",
-      "directions": "'"${DIRECTIONS}"'"
+      "keywords": "'"${KEYWORDS}"'"
     }
   }'
