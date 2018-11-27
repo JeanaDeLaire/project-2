@@ -3,5 +3,5 @@
 class User < ApplicationRecord
   include Authentication
   has_many :examples
-  has_and_belongs_to_many :sites
+  has_many :comments
 end
