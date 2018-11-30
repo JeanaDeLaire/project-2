@@ -1,6 +1,9 @@
-class SitesController < ApplicationController
-  before_action :set_site, only: [:show, :update, :destroy]
+# class SitesController < ApplicationController
+#   before_action :set_site, only: [:show, :update, :destroy]
 
+class SitesController < OpenReadController
+  skip_before_action :authenticate, only: READ_ACTIONS
+  before_action :set_site, only: [:show]
   # GET /sites
   def index
     @sites = Site.all
@@ -15,7 +18,8 @@ class SitesController < ApplicationController
 
   # POST /sites
   def create
-    @site = Site.new(site_params)
+    # @site = Site.new(site_params) #missing user_id!
+    @site = current_user.sites.new(site_params)
 
     if @site.save
       render json: @site, status: :created, location: @site
@@ -26,6 +30,9 @@ class SitesController < ApplicationController
 
   # PATCH/PUT /sites/1
   def update
+    # binding.pry
+    @site = current_user.sites.find(site_params[:id])
+
     if @site.update(site_params)
       render json: @site
     else
@@ -33,19 +40,28 @@ class SitesController < ApplicationController
     end
   end
 
-  # DELETE /sites/1
-  def destroy
-    @site.destroy
+  # Keyword Search
+  def keyword_search
+    @keywords = sites.find(params[:keywords])
+    @found_sites = Site.where(keywords: keywords)
+
+    render json: @sites
   end
 
-  private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_site
-      @site = Site.find(params[:id])
-    end
+  # DELETE /sites/1
+  # def destroy
+  #   @site.destroy
+  # end
 
-    # Only allow a trusted parameter "white list" through.
-    def site_params
-      params.require(:site).permit(:name, :description, :keywords)
-    end
+  private
+
+  # Use callbacks to share common setup or constraints between actions.
+  def set_site
+    @site = Site.find(params[:id])
+  end
+
+  # Only allow a trusted parameter "white list" through.
+  def site_params
+    params.require(:site).permit(:name, :description, :keywords)
+  end
 end

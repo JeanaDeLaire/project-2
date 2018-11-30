@@ -1,3 +1,3 @@
 class SiteSerializer < ActiveModel::Serializer
-  attributes :id, :name, :description, :keywords
+  attributes :id, :name, :description, :keywords, :comments
 end
