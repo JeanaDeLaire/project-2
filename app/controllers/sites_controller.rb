@@ -31,7 +31,7 @@ class SitesController < OpenReadController
   # PATCH/PUT /sites/1
   def update
     # binding.pry
-    @site = current_user.sites.find(site_params[:id])
+    @site = current_user.sites.find(params[:id])
 
     if @site.update(site_params)
       render json: @site
