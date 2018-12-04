@@ -49,9 +49,9 @@ class SitesController < OpenReadController
   end
 
   # DELETE /sites/1
-  # def destroy
-  #   @site.destroy
-  # end
+  def destroy
+    @site.destroy
+  end
 
   private
 
