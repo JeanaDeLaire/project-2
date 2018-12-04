@@ -50,6 +50,7 @@ class SitesController < OpenReadController
 
   # DELETE /sites/1
   def destroy
+    @site = current_user.sites.find(params[:id])
     @site.destroy
   end
 
