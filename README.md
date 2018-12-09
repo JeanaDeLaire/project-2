@@ -22,6 +22,12 @@ information from the database through a grid template. The searchbar filters thr
 - As a user I should be able to view all entries.
 - As a user I should be able to edit my previous entries.
 
+## Future Iterations and unsolved issues:
+
+A few improvements that should be made will include clearning all forms, and ensuring that content sections that appear from Get requests hide when a user logs out.
+
+Future versions of this app will add in a comment table to the database so that additional users can contribute to sites created by other users.
+
 ##
 This project was created for the PVD 4 Cohort project for the Web Development Immersive
 [![General Assembly Logo](https://camo.githubusercontent.com/1a91b05b8f4d44b5bbfb83abac2b0996d8e26c92/687474703a2f2f692e696d6775722e636f6d2f6b6538555354712e706e67)](https://generalassemb.ly/education/web-development-immersive)
